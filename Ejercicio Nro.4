@@ -1,0 +1,135 @@
+package Ejercicios;
+import java.util.ArrayList;
+import java.util.List;
+
+
+
+public class Ejercicio4Celular {
+	private static final int MAX_APPS = 20;
+    private static final int MAX_ESPACIO_MB = 1024;
+    
+    private List<Aplicacion> aplicaciones;
+    private int espacioOcupadoMb;
+    private int bateria;
+    
+    public Ejercicio4Celular() {
+        this.aplicaciones = new ArrayList<>();
+        this.espacioOcupadoMb = 0;
+        this.bateria = 100; 
+    }
+    
+    
+    private class Aplicacion {
+        String nombre;
+        int tamañoMb;
+        
+        public Aplicacion(String nombre, int tamañoMb) {
+            this.nombre = nombre;
+            this.tamañoMb = tamañoMb;
+        }
+    }
+    
+    
+    public boolean instalarAplicacion(String nombre, int tamañoMb) {
+        if (aplicaciones.size() >= MAX_APPS) {
+            System.out.println("No se puede instalar. Límite de aplicaciones alcanzado (20).");
+            return false;
+        }
+        
+        if (espacioOcupadoMb + tamañoMb > MAX_ESPACIO_MB) {
+            System.out.println("No se puede instalar. No hay suficiente espacio.");
+            return false;
+        }
+        
+        aplicaciones.add(new Aplicacion(nombre, tamañoMb));
+        espacioOcupadoMb += tamañoMb;
+        System.out.println("Aplicación '" + nombre + "' instalada correctamente.");
+        return true;
+    }
+    
+  
+    public void usarAplicacion(String nombre, int minutos) {
+        if (bateria <= 0) {
+            System.out.println("Celular apagado. No se puede usar aplicaciones.");
+            return;
+        }
+        
+        for (Aplicacion app : aplicaciones) {
+            if (app.nombre.equals(nombre)) {
+                int consumoPor10Min;
+                
+                if (app.tamañoMb > 250) {
+                    consumoPor10Min = 5;
+                } else if (app.tamañoMb > 100) {
+                    consumoPor10Min = 2;
+                } else {
+                    consumoPor10Min = 1;
+                }
+                
+                int consumoTotal = (minutos / 10) * consumoPor10Min;
+                if (minutos % 10 != 0) consumoTotal += consumoPor10Min;
+                
+                if (bateria - consumoTotal < 0) {
+                    consumoTotal = bateria;
+                    System.out.println("Aplicación '" + nombre + "' usada hasta que se agotó la batería.");
+                } else {
+                    System.out.println("Aplicación '" + nombre + "' usada por " + minutos + " minutos.");
+                }
+                
+                bateria -= consumoTotal;
+                
+                if (bateria <= 0) {
+                    bateria = 0;
+                    System.out.println("¡Batería agotada! Celular apagado.");
+                }
+                
+                return;
+            }
+        }
+        
+        System.out.println("Aplicación '" + nombre + "' no encontrada.");
+    }
+    
+    
+    public void mostrarBateria() {
+        System.out.println("Batería restante: " + bateria + "%");
+    }
+    
+   
+    public void mostrarEstado() {
+        System.out.println("\n--- Estado del Celular ---");
+        System.out.println("Aplicaciones instaladas: " + aplicaciones.size() + "/" + MAX_APPS);
+        System.out.println("Espacio usado: " + espacioOcupadoMb + "MB/" + MAX_ESPACIO_MB + "MB");
+        mostrarBateria();
+        System.out.println("Aplicaciones instaladas:");
+        for (Aplicacion app : aplicaciones) {
+            System.out.println("- " + app.nombre + " (" + app.tamañoMb + "MB)");
+        }
+    }
+    public static void main(String[] args) {
+    	Ejercicio4Celular miCelular = new Ejercicio4Celular();
+        
+       
+        miCelular.instalarAplicacion("WhatsApp", 80);
+        miCelular.instalarAplicacion("Facebook", 280);
+        miCelular.instalarAplicacion("Instagram", 120);
+        miCelular.instalarAplicacion("Juego Pesado", 350);
+        
+        
+        miCelular.mostrarEstado();
+        
+        
+        miCelular.usarAplicacion("WhatsApp", 45);
+        miCelular.mostrarBateria();
+        
+        miCelular.usarAplicacion("Facebook", 30);
+        miCelular.mostrarBateria();
+        
+        miCelular.usarAplicacion("Juego Pesado", 60);
+        miCelular.mostrarBateria();
+        
+        
+        miCelular.usarAplicacion("Instagram", 120);
+    }
+
+}
