@@ -1,0 +1,114 @@
+package Ejercicios;
+
+public class SistemaAnimalesEj9 {
+	public static void main(String[] args) {
+      
+        Perro miPerro = new Perro("Max", 3, "Labrador");
+        Gato miGato = new Gato("Luna", "Negro");
+        Pajaro miPajaro = new Pajaro("Piolín", "Canario");
+
+      
+        System.out.println("--- Sonidos de los animales ---");
+        miPerro.hacerSonido();
+        miGato.hacerSonido();
+        miPajaro.hacerSonido();
+
+     
+        System.out.println("\n--- Movimiento de los animales ---");
+        miPerro.moverse();
+        miGato.moverse();
+        miPajaro.moverse();
+
+      
+        System.out.println("\n--- Información de los animales ---");
+        miPerro.mostrarInfo();
+        miGato.mostrarInfo();
+        miPajaro.mostrarInfo();
+    }
+}
+
+class Perro {
+    private String nombre;
+    private int edad;
+    private String raza;
+
+    public Perro(String nombre, int edad, String raza) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.raza = raza;
+    }
+
+  
+    public void hacerSonido() {
+        System.out.println(nombre + " dice: ¡Guau guau!");
+    }
+
+ 
+    public void moverse() {
+        System.out.println(nombre + " está corriendo alegremente");
+    }
+
+   
+    public void mostrarInfo() {
+        System.out.println("\nPerro:");
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Edad: " + edad + " años");
+        System.out.println("Raza: " + raza);
+    }
+}
+
+class Gato {
+    private String nombre;
+    private String color;
+
+    public Gato(String nombre, String color) {
+        this.nombre = nombre;
+        this.color = color;
+    }
+
+   
+    public void hacerSonido() {
+        System.out.println(nombre + " dice: ¡Miau miau!");
+    }
+
+    
+    public void moverse() {
+        System.out.println(nombre + " está saltando sigilosamente");
+    }
+
+
+    public void mostrarInfo() {
+        System.out.println("\nGato:");
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Color: " + color);
+    }
+}
+
+class Pajaro {
+    private String nombre;
+    private String tipo;
+
+    public Pajaro(String nombre, String tipo) {
+        this.nombre = nombre;
+        this.tipo = tipo;
+    }
+
+   
+    public void hacerSonido() {
+        System.out.println(nombre + " dice: ¡Pío pío!");
+    }
+
+
+    public void moverse() {
+        System.out.println(nombre + " está volando de rama en rama");
+    }
+
+    
+    public void mostrarInfo() {
+        System.out.println("\nPájaro:");
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Tipo: " + tipo);
+    }
+
+
+}
