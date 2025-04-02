@@ -1,0 +1,124 @@
+package Ejercicios;
+
+public class BloquesMinecraftEj10 {
+	 public static void main(String[] args) {
+	    
+	        BloqueCofre cofre1 = new BloqueCofre(27, 5, "Roble");
+	        BloqueCofre cofre2 = new BloqueCofre(54, 10, "Abeto");
+	        
+	        BloqueTnt tnt1 = new BloqueTnt("Normal", 10);
+	        BloqueTnt tnt2 = new BloqueTnt("Super", 25);
+	        
+	        BloqueHorno horno1 = new BloqueHorno("Negro", 3);
+	        BloqueHorno horno2 = new BloqueHorno("Blanco", 5);
+
+	    
+	        System.out.println("--- Acciones de los bloques ---");
+	        cofre1.accion();
+	        tnt1.accion();
+	        horno1.accion();
+
+	        
+	        System.out.println("\n--- Colocación de bloques ---");
+	        cofre2.colocar();
+	        tnt2.colocar("pared");
+	        horno2.colocar("techo");
+
+	      
+	        System.out.println("\n--- Romper bloques ---");
+	        cofre1.romper();
+	        tnt2.romper();
+	        horno2.romper();
+	    }
+	}
+
+	class BloqueCofre {
+	    private int capacidad;
+	    private int resistencia;
+	    private String tipo;
+
+	    public BloqueCofre(int capacidad, int resistencia, String tipo) {
+	        this.capacidad = capacidad;
+	        this.resistencia = resistencia;
+	        this.tipo = tipo;
+	    }
+
+	
+	    public void accion() {
+	        System.out.println("Abriendo cofre de " + tipo + " con capacidad para " + capacidad + " items");
+	    }
+
+	   
+	    public void colocar() {
+	        System.out.println("Cofre colocado en el suelo");
+	    }
+
+	    public void colocar(String orientacion) {
+	        System.out.println("Cofre colocado en la " + orientacion);
+	    }
+
+	   
+	    public void romper() {
+	        System.out.println("Rompiendo cofre... ¡Drops de items!");
+	    }
+	}
+
+	class BloqueTnt {
+	    private String tipo;
+	    private int daño;
+
+	    public BloqueTnt(String tipo, int daño) {
+	        this.tipo = tipo;
+	        this.daño = daño;
+	    }
+
+	
+	    public void accion() {
+	        System.out.println("¡Activando TNT " + tipo + " que causa " + daño + " de daño!");
+	    }
+
+	   
+	    public void colocar() {
+	        System.out.println("TNT colocada en el suelo");
+	    }
+
+	    public void colocar(String orientacion) {
+	        System.out.println("TNT colocada en la " + orientacion);
+	    }
+
+	  
+	    public void romper() {
+	        System.out.println("¡Cuidado! Romper TNT puede hacerla explotar");
+	    }
+	}
+
+	class BloqueHorno {
+	    private String color;
+	    private int capacidadComida;
+
+	    public BloqueHorno(String color, int capacidadComida) {
+	        this.color = color;
+	        this.capacidadComida = capacidadComida;
+	    }
+
+	
+	    public void accion() {
+	        System.out.println("Horneando comida en horno " + color + " (capacidad: " + capacidadComida + ")");
+	    }
+
+	   
+	    public void colocar() {
+	        System.out.println("Horno colocado en el suelo");
+	    }
+
+	    public void colocar(String orientacion) {
+	        System.out.println("Horno colocado en la " + orientacion);
+	    }
+
+	 
+	    public void romper() {
+	        System.out.println("Rompiendo horno... ¡Recuerda vaciarlo primero!");
+	    }
+	
+
+}
