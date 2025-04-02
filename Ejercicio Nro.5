@@ -1,0 +1,81 @@
+package Ejercicios;
+
+public class Ejercicio5Computadora {
+	private String procesador;
+    private int memoriaRAM; 
+    private int almacenamiento; 
+    private String tarjetaVideo;
+    private boolean encendida;
+    
+    
+    public Ejercicio5Computadora(String procesador, int memoriaRAM, int almacenamiento, String tarjetaVideo) {
+        this.procesador = procesador;
+        this.memoriaRAM = memoriaRAM;
+        this.almacenamiento = almacenamiento;
+        this.tarjetaVideo = tarjetaVideo;
+        this.encendida = false; 
+    }
+    
+ 
+    public void mostrarComponentes() {
+        System.out.println("\n--- Componentes de la Computadora ---");
+        System.out.println("Procesador: " + procesador);
+        System.out.println("Memoria RAM: " + memoriaRAM + "GB");
+        System.out.println("Almacenamiento: " + almacenamiento + "GB");
+        System.out.println("Tarjeta de Video: " + tarjetaVideo);
+    }
+    
+   
+    public void mostrarEstado() {
+        System.out.println("\nEstado de la computadora: " + (encendida ? "ENCENDIDA" : "APAGADA"));
+    }
+    
+  
+    public void encender() {
+        if (!encendida) {
+            encendida = true;
+            System.out.println("\nLa computadora se está encendiendo...");
+            System.out.println("¡Sistema operativo cargado!");
+        } else {
+            System.out.println("\nLa computadora ya está encendida.");
+        }
+    }
+    
+   
+    public void apagar() {
+        if (encendida) {
+            encendida = false;
+            System.out.println("\nLa computadora se está apagando...");
+            System.out.println("¡Todos los procesos han finalizado!");
+        } else {
+            System.out.println("\nLa computadora ya está apagada.");
+        }
+    }
+    
+    public static void main(String[] args) {
+        
+    	Ejercicio5Computadora miPC = new Ejercicio5Computadora("Intel Core i7", 16, 512, "NVIDIA RTX 3060");
+        
+     
+        miPC.mostrarComponentes();
+        
+     
+        miPC.mostrarEstado();
+        
+       
+        miPC.encender();
+        miPC.mostrarEstado();
+        
+     
+        miPC.encender();
+        
+       
+        miPC.apagar();
+        miPC.mostrarEstado();
+        
+      
+        miPC.apagar();
+    }
+
+
+}
