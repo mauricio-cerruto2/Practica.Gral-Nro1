@@ -1,0 +1,128 @@
+package Ejercicios;
+
+public class MainRestauranteEj7 {
+	public static void main(String[] args) {
+	      
+        Cocinero chef = new Cocinero("Juan Pérez", 3500, 10, 25.0f);
+        Mesero mesero1 = new Mesero("Carlos Gómez", 2800, 8, 18.0f, 450.0f);
+        Mesero mesero2 = new Mesero("Ana López", 2600, 12, 16.0f, 380.0f);
+        Administrativo admin1 = new Administrativo("María Rodríguez", 3200.0f, "Gerente");
+        Administrativo admin2 = new Administrativo("Pedro Sánchez", 2900.0f, "Contador");
+
+        
+        System.out.println("--- Sueldos Totales ---");
+        System.out.println("Cocinero: $" + chef.sueldoTotal());
+        System.out.println("Mesero 1: $" + mesero1.sueldoTotal());
+        System.out.println("Mesero 2: $" + mesero2.sueldoTotal());
+        System.out.println("Administrativo 1: $" + admin1.sueldoTotal());
+        System.out.println("Administrativo 2: $" + admin2.sueldoTotal());
+
+       
+        System.out.println("\n--- Empleados con sueldo base de $2800 ---");
+        mostrarEmpleadosPorSueldo(2800, chef, mesero1, mesero2, admin1, admin2);
+
+        System.out.println("\n--- Empleados con sueldo base de $3200 ---");
+        mostrarEmpleadosPorSueldo(3200, chef, mesero1, mesero2, admin1, admin2);
+    }
+
+
+    public static void mostrarEmpleadosPorSueldo(int sueldo, Cocinero c, Mesero m1, Mesero m2, Administrativo a1, Administrativo a2) {
+        if (c.getSueldoMes() == sueldo) {
+            System.out.println("Cocinero: " + c.getNombre() + " - Sueldo: $" + c.getSueldoMes());
+        }
+        if (m1.getSueldoMes() == sueldo) {
+            System.out.println("Mesero: " + m1.getNombre() + " - Sueldo: $" + m1.getSueldoMes());
+        }
+        if (m2.getSueldoMes() == sueldo) {
+            System.out.println("Mesero: " + m2.getNombre() + " - Sueldo: $" + m2.getSueldoMes());
+        }
+        if (a1.getSueldoMes() == sueldo) {
+            System.out.println("Administrativo: " + a1.getNombre() + " - Sueldo: $" + a1.getSueldoMes());
+        }
+        if (a2.getSueldoMes() == sueldo) {
+            System.out.println("Administrativo: " + a2.getNombre() + " - Sueldo: $" + a2.getSueldoMes());
+        }
+    }
+}
+
+  
+	
+	class Cocinero {
+	    private String nombre;
+	    private int sueldoMes;
+	    private int horasExtra;
+	    private float sueldoHora;
+
+	    public Cocinero(String nombre, int sueldoMes, int horasExtra, float sueldoHora) {
+	        this.nombre = nombre;
+	        this.sueldoMes = sueldoMes;
+	        this.horasExtra = horasExtra;
+	        this.sueldoHora = sueldoHora;
+	    }
+
+	    public float sueldoTotal() {
+	        return sueldoMes + (horasExtra * sueldoHora);
+	    }
+
+	    public String getNombre() {
+	        return nombre;
+	    }
+
+	    public int getSueldoMes() {
+	        return sueldoMes;
+	    }
+	}
+
+	class Mesero {
+	    private String nombre;
+	    private int sueldoMes;
+	    private int horasExtra;
+	    private float sueldoHora;
+	    private float propina;
+
+	    public Mesero(String nombre, int sueldoMes, int horasExtra, float sueldoHora, float propina) {
+	        this.nombre = nombre;
+	        this.sueldoMes = sueldoMes;
+	        this.horasExtra = horasExtra;
+	        this.sueldoHora = sueldoHora;
+	        this.propina = propina;
+	    }
+
+	    public float sueldoTotal() {
+	        return sueldoMes + (horasExtra * sueldoHora) + propina;
+	    }
+
+	    public String getNombre() {
+	        return nombre;
+	    }
+
+	    public int getSueldoMes() {
+	        return sueldoMes;
+	    }
+	}
+
+	class Administrativo {
+	    private String nombre;
+	    private float sueldoMes;
+	    private String cargo;
+
+	    public Administrativo(String nombre, float sueldoMes, String cargo) {
+	        this.nombre = nombre;
+	        this.sueldoMes = sueldoMes;
+	        this.cargo = cargo;
+	    }
+
+	    public float sueldoTotal() {
+	        return sueldoMes;
+	    }
+
+	    public String getNombre() {
+	        return nombre;
+	    }
+
+	    public float getSueldoMes() {
+	        return sueldoMes;
+	    }
+	    
+
+}
