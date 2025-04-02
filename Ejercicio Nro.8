@@ -1,0 +1,106 @@
+package Ejercicios;
+
+public class AmbientesUniversitariosEj8 {
+	public static void main(String[] args) {
+     
+        Oficina oficina1 = new Oficina(4, 2, 3);
+        Oficina oficina2 = new Oficina(6, 3, 5);
+        Aula aula1 = new Aula("Aula 101", 40, 20);
+        Aula aula2 = new Aula("Aula 205", 30, 15);
+        Laboratorio lab1 = new Laboratorio("Lab Química", 25, 12, 25);
+
+    
+        System.out.println("--- Información de Ambientes ---");
+        oficina1.mostrar();
+        oficina2.mostrar();
+        aula1.mostrar();
+        aula2.mostrar();
+        lab1.mostrar();
+
+     
+        System.out.println("\n--- Cantidad de Muebles ---");
+        System.out.println("Oficina 1: " + oficina1.cantidadMuebles() + " muebles");
+        System.out.println("Oficina 2: " + oficina2.cantidadMuebles() + " muebles");
+        System.out.println("Aula 101: " + aula1.cantidadMuebles() + " pupitres");
+        System.out.println("Aula 205: " + aula2.cantidadMuebles() + " pupitres");
+        System.out.println("Laboratorio Química: " + lab1.cantidadMuebles() + " muebles");
+    }
+}
+
+class Oficina {
+    private int nroSillas;
+    private int nroEscritorios;
+    private int nroEstanterias;
+
+    public Oficina(int nroSillas, int nroEscritorios, int nroEstanterias) {
+        this.nroSillas = nroSillas;
+        this.nroEscritorios = nroEscritorios;
+        this.nroEstanterias = nroEstanterias;
+    }
+
+  
+    public void mostrar() {
+        System.out.println("\nOficina:");
+        System.out.println("Sillas: " + nroSillas);
+        System.out.println("Escritorios: " + nroEscritorios);
+        System.out.println("Estanterías: " + nroEstanterias);
+    }
+
+ 
+    public int cantidadMuebles() {
+        return nroSillas + nroEscritorios + nroEstanterias;
+    }
+}
+
+class Aula {
+    private String nombre;
+    private int capacidad;
+    private int nroPupitres;
+
+    public Aula(String nombre, int capacidad, int nroPupitres) {
+        this.nombre = nombre;
+        this.capacidad = capacidad;
+        this.nroPupitres = nroPupitres;
+    }
+
+
+    public void mostrar() {
+        System.out.println("\nAula " + nombre + ":");
+        System.out.println("Capacidad: " + capacidad + " estudiantes");
+        System.out.println("Pupitres: " + nroPupitres);
+    }
+
+  
+    public int cantidadMuebles() {
+        return nroPupitres;
+    }
+}
+
+class Laboratorio {
+    private String nombre;
+    private int capacidad;
+    private int nroMesas;
+    private int nroSillas;
+
+    public Laboratorio(String nombre, int capacidad, int nroMesas, int nroSillas) {
+        this.nombre = nombre;
+        this.capacidad = capacidad;
+        this.nroMesas = nroMesas;
+        this.nroSillas = nroSillas;
+    }
+
+
+    public void mostrar() {
+        System.out.println("\nLaboratorio " + nombre + ":");
+        System.out.println("Capacidad: " + capacidad + " estudiantes");
+        System.out.println("Mesas: " + nroMesas);
+        System.out.println("Sillas: " + nroSillas);
+    }
+
+    
+    public int cantidadMuebles() {
+        return nroMesas + nroSillas;
+    }
+
+
+}
