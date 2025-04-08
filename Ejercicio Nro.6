@@ -79,3 +79,64 @@ public class VideojuegoEj6 {
 
 
 }
+
+Codigo en Python:
+
+class Videojuego:
+    
+    def _init_(self, nombre, plataforma, cantidad_jugadores=1):
+        self.nombre = nombre
+        self.plataforma = plataforma
+        self.cantidad_jugadores = cantidad_jugadores
+    
+  
+
+    def from_nombre_plataforma(cls, nombre, plataforma):
+        return cls(nombre, plataforma)
+    
+    
+
+    def from_nombre_jugadores(cls, nombre, cantidad_jugadores):
+        return cls(nombre, "Multiplataforma", cantidad_jugadores)
+    
+    def mostrar(self):
+        return f"Videojuego: {self.nombre} | Plataforma: {self.plataforma} | Jugadores: {self.cantidad_jugadores}"
+    
+    
+    def agregar_jugadores(self):
+        self.cantidad_jugadores += 1
+        return self.cantidad_jugadores
+    
+    
+    def agregar_jugadores(self, cantidad):
+        self.cantidad_jugadores += cantidad
+        return self.cantidad_jugadores
+
+
+
+v1 = Videojuego("The Legend of Zelda", "Nintendo Switch", 1)
+
+v2 = Videojuego.from_nombre_plataforma("God of War", "PlayStation")
+
+v3 = Videojuego.from_nombre_jugadores("Minecraft", 4)
+
+
+print(v1.mostrar())  # Videojuego: The Legend of Zelda | Plataforma: Nintendo Switch | Jugadores: 1
+print(v2.mostrar())  # Videojuego: God of War | Plataforma: PlayStation | Jugadores: 1
+print(v3.mostrar())  # Videojuego: Minecraft | Plataforma: Multiplataforma | Jugadores: 4
+
+print("\nMostrando información de videojuegos:")
+print(v1.mostrar())
+print(v2.mostrar())
+print(v3.mostrar())
+
+
+print("\nAgregando jugadores:")
+v1.agregar_jugadores()  
+print(f"{v1.nombre}: {v1.cantidad_jugadores} jugadores") 
+
+v2.agregar_jugadores(3) 
+print(f"{v2.nombre}: {v2.cantidad_jugadores} jugadores")  
+
+v3.agregar_jugadores(2)  
+print(f"{v3.nombre}: {v3.cantidad_jugadores} jugadores")  
