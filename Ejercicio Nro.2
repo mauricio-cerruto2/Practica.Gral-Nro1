@@ -49,3 +49,40 @@ public class Ejercicio2 {
 	
 
 }
+
+Codigo en Python:
+class Coche:
+    def _init_(self, marca, modelo):
+        self.marca = marca
+        self.modelo = modelo
+        self.velocidad = 0
+    
+    def acelerar(self):
+        self.velocidad += 10
+        return self.velocidad
+    
+    def frenar(self):
+        self.velocidad = max(0, self.velocidad - 5)  
+        return self.velocidad
+    
+    def mostrar_velocidad(self):
+        return f"{self.marca} {self.modelo}: Velocidad actual {self.velocidad} km/h"
+
+
+coche1 = Coche("Toyota", "Corolla")
+coche2 = Coche("Ford", "Mustang")
+
+
+coche1.acelerar()  
+coche1.acelerar()  
+coche1.frenar() 
+
+coche2.acelerar()  
+coche2.acelerar()  
+coche2.acelerar()  
+coche2.frenar()    
+coche2.frenar()    
+
+
+print(coche1.mostrar_velocidad())  
+print(coche2.mostrar_velocidad())  
